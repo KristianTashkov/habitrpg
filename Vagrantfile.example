@@ -6,8 +6,9 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provider "virtualbox" do |v|
-    v.memory = 768
+    v.memory = 1536
     v.cpus = 1
+    v.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/vagrant", "1"]
   end
   config.vm.box = "thepeopleseason/habitrpg"
   config.ssh.forward_agent = true
